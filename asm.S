@@ -32,7 +32,7 @@ movq 8(%rsi),%rdi
 movq 24(%rsi),%rcx
 movq 32(%rsi),%rdx
 movq 56(%rsi),%rbx
-movq (%rsi),%rax
+movq 0(%rsi),%rax
 movq 16(%rsi),%rsi
 jmp *%rax
 
