@@ -10,7 +10,7 @@ movq %r8,40(%rdi)
 movq %r9,48(%rdi)
 movq %rbx,56(%rdi)
 movq %rbp,64(%rdi)
-leaq -8(%rsp),%rax
+leaq 8(%rsp),%rax
 movq %rax,72(%rdi)
 movq %r12,80(%rdi)
 movq %r13,88(%rdi)
