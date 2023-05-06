@@ -8,10 +8,10 @@ c++ coroutine demo
 ````cpp
 	ctx.stack = (char*)malloc(1024*128);
 	ctx.stack_size = 1024*128;
-  .
-  .
-  .
-  char* sp = ctx.stack + ctx.stack_size;
+	 // .
+	 // .
+	 // .
+	char* sp = ctx.stack + ctx.stack_size;
 	ctx.regs[RegIndex::Rsp] = (char*)((unsigned long)sp & -16LL) - 8;//保奇偶性  pushq  ebp  地址为平台寄存器位数的偶数倍
 ````
 `sp`指向分配的内存的空间的末尾地址`Addr`, `& -16LL`的操作抹去了低4位的数值变成`0000`, 使得`Addr2`的值是`8`的偶数倍即`2n*8`, 再减去`8`的结果为`(2n-1)*8`(为rsp指向地址),因为后续的函数调用中`pushq %rbp`的操作会记录旧`rbp`并且让`rsp - 8`(向低地址方向变化)，因此`rsp`再操作后的指向位置就是`(2n - 2)*8`即`8`的偶数倍。
