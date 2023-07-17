@@ -8,7 +8,7 @@ c++ coroutine demo
 > 2.让新栈的栈底指针`rbp`设置为当前的`rsp`   
 > 3.设置`rsp`指向新栈的栈顶   
 >
-因此`rsp`是指向保存返回地址的内存空间，`0(%rsp)`就是读取`call swap_context`保存的下一条指令的返回地址。
+因此`rsp`是指向保存返回地址的内存空间，`0(%rsp)`就是读取`call swap_context`保存的下一条指令的返回地址(即，return address)。
 
 ````cpp
 	ctx.stack = (char*)malloc(1024*128);
